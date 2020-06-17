@@ -14,5 +14,5 @@
 		"dotenv": "^8.2.0"
 	},
 	"author": "Jordyn",
-	"license": "Apache-2.0"
+	"license": "MIT"
 }
