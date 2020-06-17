@@ -1,0 +1,19 @@
+{
+	"name": "BASE_BOT",
+	"version": "1.0.0",
+	"description": "Bot stuff",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo 'test'",
+		"start": "node index"
+	},
+	"keywords": [
+		"discordjs"
+	],
+	"dependencies": {
+		"discord.js": "github:discordjs/discord.js",
+		"dotenv": "^8.2.0"
+	},
+	"author": "Jordy",
+	"license": "ISC"
+}
