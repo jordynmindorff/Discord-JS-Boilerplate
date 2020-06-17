@@ -11,7 +11,7 @@
 
 - I've been making bots for a while now, so I decided to make it easier for myself when I start a new project by making this. This is my first public git repo, and will probably be used by myself more than anyone.
 
-- Credit goes to [{TheSourceCode}](https://www.youtube.com/watch?v=Z-tc91hArlM) for making a great tutorial series on discord.js bots that used a slightly different, but very similar boilerplate to this. (Warning: This series is out of date)
+- Credit goes to [{TheSourceCode}](https://www.youtube.com/watch?v=Z-tc91hArlM) for making a great tutorial series on discord.js bots that used a slightly different, but very similar, boilerplate to this. (Warning: This series is out of date)
 
 - The [discord.js docs](https://discord.js.org/#/docs/main/stable/general/welcome) and the [discord.js guide](https://discordjs.guide/) are amazing resources, check them out!
 
