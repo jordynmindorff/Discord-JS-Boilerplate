@@ -71,7 +71,7 @@ module.exports.run = async (bot, message, args) => {
   const { channel } = message;
 
   // Send a response in the channel
-  channel.send('Hi there!');
+  await channel.send('Hi there!');
 };
 
 // Name of the command, this is what needs to be called after the prefix for the command to run. Lowercase mandatory.
