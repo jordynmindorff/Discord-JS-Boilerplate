@@ -101,7 +101,7 @@ module.exports.name = 'commandnamelowercase';
 
 ### Hosting
 
-Hosting is a very complex topic, but my personal preference as a hosting platform is [Heroku](https://heroku.com). Billing is based on hours of use per month per application. If you simply add a credit card, there are enough hours for one application to be running 24/7 and then some.
+Hosting is a very complex topic, but my personal preference as a hosting platform is [Heroku](https://heroku.com). Billing is based on hours of use per month per application. If you simply add a credit card, there are enough free hours for one application to be running 24/7 and then some.
 
 ### The End
 
