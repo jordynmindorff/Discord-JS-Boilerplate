@@ -9,10 +9,10 @@
 	"keywords": [
 		"discordjs"
 	],
-	"dependencies": {
-		"discord.js": "github:discordjs/discord.js",
-		"dotenv": "^8.2.0"
-	},
 	"author": "Jordyn",
-	"license": "MIT"
+	"license": "MIT",
+	"dependencies": {
+		"discord.js": "^12.4.1",
+		"dotenv": "^8.2.0"
+	}
 }

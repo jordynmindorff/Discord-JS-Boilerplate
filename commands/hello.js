@@ -11,4 +11,4 @@ module.exports.run = async (bot, message, args) => {
 };
 
 // Name of the command, this is what needs to be called after the prefix for the command to run
-module.exports.name = 'hello';
+module.exports.name = ['hello', 'goodbye', 'bye'];

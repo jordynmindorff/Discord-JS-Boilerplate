@@ -11,7 +11,7 @@
 
 - I've been making bots for a while now, so I decided to make it easier for myself when I start a new project by making this. This is my first public git repo, and will probably be used by myself more than anyone.
 
-- Credit goes to [{TheSourceCode}](https://www.youtube.com/watch?v=Z-tc91hArlM) for making a great tutorial series on discord.js bots that used a slightly different, but very similar, boilerplate to this. (Warning: This series is out of date)
+- Credit goes to [{TheSourceCode}](https://www.youtube.com/watch?v=Z-tc91hArlM) for making a great tutorial series on discord.js bots that used a different, but similar, boilerplate to this. (Warning: This series is out of date and will not work properly with newest versions)
 
 - The [discord.js docs](https://discord.js.org/#/docs/main/stable/general/welcome) and the [discord.js guide](https://discordjs.guide/) are amazing resources, check them out!
 
@@ -41,8 +41,9 @@ npm install
 
 #### Misc Stuff
 
-- Go into the `index.js` file, into the `ready` event.
-  - Find the function param that says `'STATUS HERE'` and put your bot's status in the quotes.
+- Open the `currentStatus.txt` file
+  - Replace the text in this file with the status you want your bot to have.
+  - Note: The status can be updated with `{PREFIX}setStatus STATUSHERE` as I have added it as a pre-packaged command.
 
 #### Test it Out
 
@@ -67,29 +68,30 @@ const Discord = require('discord.js');
 // Args param: Array of args after command
 
 module.exports.run = async (bot, message, args) => {
-  // Destructure channel from message, identical to message.channel
-  const { channel } = message;
+	// Destructure channel from message, identical to message.channel
+	const { channel } = message;
 
-  // Send a response in the channel
-  await channel.send('Hi there!');
+	// Send a response in the channel
+	await channel.send('Hi there!');
 };
 
 // Name of the command, this is what needs to be called after the prefix for the command to run. Lowercase mandatory.
+// Can be in array form, ex: ['hello', 'bye'] for multiple names/aliases
 module.exports.name = 'hello';
 ```
 
 #### Making Your Own
 
-- First, create a file in the ```commands/``` directory called ```commandNameHere.js```
+- First, create a file in the `commands/` directory called `commandNameHere.js`
 - Copy and paste the following template:
 
 ```js
 const Discord = require('discord.js');
 
 module.exports.run = async (bot, message, args) => {
-  const { channel } = message;
+	const { channel } = message;
 
-  channel.send('Hi there!');
+  await channel.send('Hi there!');
 };
 
 module.exports.name = 'commandnamelowercase';
@@ -97,4 +99,10 @@ module.exports.name = 'commandnamelowercase';
 
 - Write your command, save the file, run the bot and try it out!
 
-Thanks for stopping by, star the repo if you like it and feel free to make PRs, always welcome feedback and/or learning moments.
+### Hosting
+
+Hosting is a very complex topic, but my personal preference as a hosting platform is [Heroku](https://heroku.com). Billing is based on hours of use per month per application. If you simply add a credit card, there are enough hours for one application to be running 24/7 and then some.
+
+### The End
+
+Good luck! Thanks for stopping by, star the repo if you like it and feel free to make PRs, always welcome feedback and/or learning moments.

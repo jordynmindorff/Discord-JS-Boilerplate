@@ -1,32 +1,19 @@
 require('dotenv').config();
 const Discord = require('discord.js');
-const { readyEvent, messageEvent } = require('./utils/botEvents');
-const { setupFiles } = require('./utils/setupFiles');
+const setupFiles = require('./extras/setupFiles');
+const eventHandler = require('./events/eventHandler');
 
 // Initialize bot client with partials for reactions and messages
-const bot = new Discord.Client({ partials: ['MESSAGE', 'REACTION'] });
+const bot = new Discord.Client({ partials: ['MESSAGE', 'REACTION', 'GUILD_MEMBER'] });
 
 // Create a new collection of commands
 bot.commands = new Discord.Collection();
 
-// Setup Command Files and Commands Collection
+// Setup Command Files and Collection
 setupFiles(bot);
 
-// Setup and Misc on Ready
-bot.on('ready', async () => {
-	readyEvent(bot, 'STATUS HERE');
-});
+// Handle events
+eventHandler(bot);
 
-// Handle Command
-bot.on('message', async (message) => {
-	messageEvent(message, bot);
-});
-
-// Keep the bot alive by sending console message to heroku
-setTimeout(function wakeUp() {
-	console.log('WAKE UP DYNO');
-	return setTimeout(wakeUp, 120000);
-}, 120000);
-
-// Login Using Token
+// Login bot
 bot.login(process.env.DISCORD_TOKEN);
