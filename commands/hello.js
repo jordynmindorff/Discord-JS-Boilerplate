@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 
 // This exported run function is what will be executed when the command is called
-// The bot param is a Discord.Client type, the message param is the Discord.Message that contained the command, and the args param is an array of arguments after the command, joined by spaces in ../utils/botEvents
+// The bot param is a Discord.Client type, the message param is the Discord.Message that contained the command, and the args param is an array of arguments after the command, split by spaces in ../events/messageEvent
 module.exports.run = async (bot, message, args) => {
 	// Destructure channel from message, identical to message.channel
 	const { channel } = message;
