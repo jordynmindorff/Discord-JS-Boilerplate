@@ -22,7 +22,7 @@
 Clone the repository:
 
 ```bash
-git clone https://github.com/jordy337/Discord-JS-Boilerplate---No-DB.git
+git clone https://github.com/jordynmindorff/Discord-JS-Boilerplate---No-DB.git
 ```
 
 Install packages:
