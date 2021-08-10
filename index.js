@@ -3,6 +3,7 @@ const Discord = require('discord.js');
 const eventHandler = require('./events/eventHandler');
 
 // Initialize bot client with proper partials and intents
+// You will want to decide what intents to allow your bot to access, these are just the ones I pretty much always need.
 const bot = new Discord.Client({
 	partials: ['MESSAGE', 'REACTION', 'GUILD_MEMBER', 'CHANNEL'],
 	intents: [
