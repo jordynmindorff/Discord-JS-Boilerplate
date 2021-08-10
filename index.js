@@ -1,16 +1,24 @@
 require('dotenv').config();
 const Discord = require('discord.js');
-const setupFiles = require('./extras/setupFiles');
 const eventHandler = require('./events/eventHandler');
 
-// Initialize bot client with partials for reactions and messages
-const bot = new Discord.Client({ partials: ['MESSAGE', 'REACTION', 'GUILD_MEMBER'] });
+// Initialize bot client with proper partials and intents
+const bot = new Discord.Client({
+	partials: ['MESSAGE', 'REACTION', 'GUILD_MEMBER', 'CHANNEL'],
+	intents: [
+		Discord.Intents.FLAGS.GUILDS,
+		Discord.Intents.FLAGS.GUILD_MESSAGES,
+		Discord.Intents.FLAGS.GUILD_MEMBERS,
+		Discord.Intents.FLAGS.GUILD_PRESENCES,
+		Discord.Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
+		Discord.Intents.FLAGS.DIRECT_MESSAGES,
+		Discord.Intents.FLAGS.DIRECT_MESSAGE_REACTIONS,
+	],
+});
 
 // Create a new collection of commands
 bot.commands = new Discord.Collection();
-
-// Setup Command Files and Collection
-setupFiles(bot);
+bot.slashCommands = new Discord.Collection();
 
 // Handle events
 eventHandler(bot);

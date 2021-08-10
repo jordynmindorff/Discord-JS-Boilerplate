@@ -3,7 +3,9 @@ const Discord = require('discord.js');
 module.exports = async (message, bot) => {
 	// Check for ineligible messages and handle
 	if (message.partial) message = await message.fetch();
-	if (message.channel.type === 'text') {
+	if (message.channel.type === 'DM') {
+		return;
+	} else {
 		const prefix = process.env.PREFIX;
 
 		// Check to see if the message has the prefix

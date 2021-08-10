@@ -1,7 +1,11 @@
 {
-	"name": "BASE_BOT",
+	"name": "example-discord.js-bot",
 	"version": "1.0.0",
 	"description": "Bot stuff",
+	"engines": {
+		"node": "16.6.x",
+		"npm": "7.x"
+	},
 	"main": "index.js",
 	"scripts": {
 		"start": "node index"
@@ -12,7 +16,7 @@
 	"author": "Jordyn",
 	"license": "MIT",
 	"dependencies": {
-		"discord.js": "^12.4.1",
-		"dotenv": "^8.2.0"
+		"discord.js": "^13.0.1",
+		"dotenv": "^8.6.0"
 	}
 }

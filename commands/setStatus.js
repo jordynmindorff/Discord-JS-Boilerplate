@@ -7,14 +7,14 @@ module.exports.run = async (bot, message, args) => {
 	await message.delete();
 	const status = args.join(' ');
 
-	if (!message.member.hasPermission('ADMINISTRATOR')) {
-		return channel.send('Permission DENNNNNNNIEDDDD! Get dunked on 🏀!');
+	if (!member.permissions.has(Discord.Permissions.ADMINISTRATOR)) {
+		return channel.send({ content: 'Permission DENNNNNNNIEDDDD! Get dunked on 🏀!' });
 	}
 
 	fs.writeFileSync('currentStatus.txt', status);
 
 	bot.user.setPresence({
-		activity: { name: status, type: 'PLAYING' },
+		activities: [{ name: status, type: 'PLAYING' }],
 		status: 'online',
 	});
 };
