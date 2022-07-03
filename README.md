@@ -4,7 +4,7 @@
 
 ### Prerequisites
 
--   Have node.js installed (Discord.js V13 REQUIRES Node v16.6.0 or higher)
+-   Have node.js installed (Discord.js V13.8+ REQUIRES Node v16.9.0 or higher)
 -   Have git installed
 
 ### About
@@ -38,9 +38,9 @@ Bots are like any other discord server/guild member in that they are assigned sp
 
 This is a somewhat new concept for the discord API. All bots receive events through something called the "Gateway," which, for the most part, you don't need to worry about. However, in discord.js, we use "Intents" to declare what events we want our bots to access. For example, the `GUILD_MESSAGES` intent allows us to access the messages sent in guilds and recieve the `messageCreate` event.
 
-Now, the decision here comes with the 'privileged' part. Some intents are called privileged because they grant access to potentially sensitive information. They are the `GUILD_PRESENCES` intent, and `GUILD_MEMBERS` intents. If your bot will need to access this data, click the checkmarks next to them. Be aware, if your bot is in over 100 servers some day, you will need to get verification from discord to be allowed this access.
+Now, the decision here comes with the 'privileged' part. Some intents are called privileged because they grant access to potentially sensitive information. They are the `GUILD_PRESENCES` intent, and `GUILD_MEMBERS` intents. If your bot will need to access this data, click the checkmarks next to them in the discord application panel where you configured/created your bot. Be aware, if your bot is in over 100 servers some day, you will need to get verification from discord to be allowed this access.
 
-Read a lot more about this topic written by much smarter and more knowledgeable people [here](https://discordjs.guide/popular-topics/intents.html#privileged-intents). **You will also want to read this to decide what intents to initialize the bot with in the `index.js` file.**
+Read a lot more about this topic written by much smarter and more knowledgeable people [here](https://discordjs.guide/popular-topics/intents.html#privileged-intents). **You will also want to read this to decide what intents to initialize the bot with in the `index.js` file. I gave it quite a few by default.**
 
 ### Setup / Install of Codebase
 
@@ -61,8 +61,9 @@ npm install
 #### Env Variables
 
 -   Change the name of `.env.example` to `.env`
--   Set the `DISCORD_TOKEN` variable to your bot's token (**REMINDER: DO NOT SHARE THIS, THAT IS WHY `.env` IS GIT IGNORED BY DEFAULT**)
+-   Set the `DISCORD_TOKEN` variable to your bot's token (**REMINDER: DO NOT SHARE THIS, THAT IS WHY `.env` IS GIT IGNORED BY DEFAULT, IT WON'T BE SHARED**)
 -   Set the `PREFIX` variable to your desired prefix. (Ex: -, \_, !, etc.)
+-   Set the `APPLICATION_ID` variable to the application id number on the "General Information" tab of your bot's application in the discord developer panel you used to setup the bot before. Don't worry, this one doesn't need to be as secret. See this: ![Image of discord portal application menu](/images/discordSetup6.png 'Copy the application id!')
 
 #### Misc Stuff
 
@@ -79,13 +80,23 @@ npm install
 
 ### Creating Commands
 
--   Be aware, this boilerplate setup supports two different kinds of commands. Slash commands, and message commands.
-    -   Slash commands are ran by using discord's built in menu for these commands and are preferred.
-    -   Message commands are ran by putting a prefix in front of a discord message and these are less preferable, but (little secret), I still use them a lot.
+Be aware, this boilerplate setup supports two different kinds of commands. Slash commands, and message commands. See the comments in the command files for specific examples/information.
 
-Visit the `commands` folder and `hello.js` to see the structure of a message command.
-Visit the `slashCommands` folder and `hello.js` to see the structure of a slash command.
-They are similar, but have many differences. Read the comments in the file and they explain how to make your own commands.
+#### Slash Commands
+
+-   Slash commands are ran by using discord's built in menu for these commands and are preferred.
+    -   Visit the `slashCommands` folder and `hello.js` or `setStatus.js` to see the command structure.
+    -   Slash commands run off of something called discord interactions. Read all about them [here](https://discordjs.guide/interactions/slash-commands.html#registering-slash-commands) in the guide. All commands through the model in this repo are global commands.
+    -   There are also other types of interactions that allow more integration into discord through context menus, but this is not included in this boilerplate.
+-   In slash commands, the biggest thing to keep in mind is the options and permissions structure.
+    -   This structure in action may be seen in the files included in this repo. For all option types, refer to [this resource](https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-type).
+    -   In the command file, you will also see `default_member_permissions`. This sets out the default visibility of the command to those with the specified permissions. To see the rest of the permissions flags ass shown in `setStatus.js`, see [this](https://discord.js.org/#/docs/discord.js/stable/class/Permissions?scrollTo=s-FLAGS).
+
+#### Message Commands
+
+-   Message commands are pretty self explanatory -- you send a message in chat with a prefix and a command in run. This is the classic style.
+-   Be aware, this is not Discord's preferred way of handling commands and is becoming discouraged.
+-   All permissions/options must be handled manually.
 
 ### Hosting
 
@@ -93,4 +104,4 @@ Hosting is a very complex topic, but my personal preference as a hosting platfor
 
 ### The End
 
-Good luck! Thanks for stopping by, star the repo if you like it and feel free to make PRs, always welcome feedback and/or learning moments.
+Good luck! Thanks for stopping by, star the repo if you like it and feel free to make PRs, always welcome feedback and/or learning opportunities.

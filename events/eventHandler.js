@@ -1,6 +1,6 @@
 const readyEvent = require('./readyEvent');
-const messageEvent = require('./messageEvent');
-const interactionEvent = require('./interactionEvent');
+const messageCreateEvent = require('./messageCreateEvent');
+const interactionCreateEvent = require('./interactionCreateEvent');
 
 module.exports = (bot) => {
 	bot.on('ready', () => {
@@ -8,10 +8,10 @@ module.exports = (bot) => {
 	});
 
 	bot.on('messageCreate', (message) => {
-		messageEvent(message, bot);
+		messageCreateEvent(message, bot);
 	});
 
 	bot.on('interactionCreate', (interaction) => {
-		interactionEvent(interaction, bot);
+		interactionCreateEvent(interaction, bot);
 	});
 };

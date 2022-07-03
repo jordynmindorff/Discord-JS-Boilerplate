@@ -3,8 +3,9 @@
 module.exports.run = async (bot, interaction) => {
 	// Here you could do whatever you'd like with the information the interaction object has provided you, like message options.
 
-	// interaction.reply() creates a reply message to the command and accepts all message parameters as per any message with discord.js
-	await interaction.reply({
+	// interaction.editReply() creates a reply message to the command and accepts all message parameters as per any message with discord.js
+	// We have to use editReply rather than just reply because we deferred the reply earlier just in case it took a while to respond
+	await interaction.editReply({
 		content: 'Hi! You ran a slash command to get this response, good job!',
 	});
 };
