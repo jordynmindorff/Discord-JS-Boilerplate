@@ -36,11 +36,13 @@ Bots are like any other discord server/guild member in that they are assigned sp
 
 #### Privileged Gateway Intents
 
-This is a somewhat new concept for the discord API. All bots receive events through something called the "Gateway," which, for the most part, you don't need to worry about. However, in discord.js, we use "Intents" to declare what events we want our bots to access. For example, the `GUILD_MESSAGES` intent allows us to access the messages sent in guilds and recieve the `messageCreate` event.
+This is a somewhat new concept for the discord API. All bots receive events through something called the "Gateway," which, for the most part, you don't need to worry about. However, in discord.js, we use "Intents" to declare what events we want our bots to access. For example, the `MessageContent` intent allows us to access the messages sent in guilds and recieve the `messageCreate` event.
 
-Now, the decision here comes with the 'privileged' part. Some intents are called privileged because they grant access to potentially sensitive information. They are the `GUILD_PRESENCES` intent, and `GUILD_MEMBERS` intents. If your bot will need to access this data, click the checkmarks next to them in the discord application panel where you configured/created your bot. Be aware, if your bot is in over 100 servers some day, you will need to get verification from discord to be allowed this access.
+Now, the decision here comes with the 'privileged' part. Some intents are called privileged because they grant access to potentially sensitive information. They are the `GuildPresences` intent, the `MessageContent` intent, and `GuildMembers` intents. If your bot will need to access this data, click the checkmarks next to them in the discord application panel where you configured/created your bot. Be aware, if your bot is in over 100 servers some day, you will need to get verification from discord to be allowed this access.
 
 Read a lot more about this topic written by much smarter and more knowledgeable people [here](https://discordjs.guide/popular-topics/intents.html#privileged-intents). **You will also want to read this to decide what intents to initialize the bot with in the `index.js` file. I gave it quite a few by default.**
+
+_A Warning:_ While I include text-based commands in this boilerplate, I do not recommend you make any substantial use of them for any new project. The only 'correct' way to make commands is now with slash-commands. If you intent to use text-based commands, you will _need_ the `MessageContent` privileged intent which isn't ideal.
 
 ### Setup / Install of Codebase
 
@@ -89,19 +91,23 @@ Be aware, this boilerplate setup supports two different kinds of commands. Slash
     -   Slash commands run off of something called discord interactions. Read all about them [here](https://discordjs.guide/interactions/slash-commands.html#registering-slash-commands) in the guide. All commands through the model in this repo are global commands.
     -   There are also other types of interactions that allow more integration into discord through context menus, but this is not included in this boilerplate.
 -   In slash commands, the biggest thing to keep in mind is the options and permissions structure.
-    -   This structure in action may be seen in the files included in this repo. For all option types, refer to [this resource](https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-type).
-    -   In the command file, you will also see `default_member_permissions`. This sets out the default visibility of the command to those with the specified permissions. To see the rest of the permissions flags ass shown in `setStatus.js`, see [this](https://discord.js.org/#/docs/discord.js/stable/class/Permissions?scrollTo=s-FLAGS).
+    -   This structure in action may be seen in the files included in this repo. For all option types, refer to [this resource](https://discord-api-types.dev/api/discord-api-types-v10/enum/ApplicationCommandOptionType).
+    -   In the command file, you will also see `default_member_permissions`. This sets out the default visibility of the command to those with the specified permissions. To see the rest of the permissions flags ass shown in `setStatus.js`, see [this](https://discord-api-types.dev/api/discord-api-types-payloads/common#PermissionFlagsBits).
+
+_A Warning:_ New global commands can sometimes take a while to be processed and appear in discord. Likewise for deleting them.
 
 #### Message Commands
 
 -   Message commands are pretty self explanatory -- you send a message in chat with a prefix and a command in run. This is the classic style.
--   Be aware, this is not Discord's preferred way of handling commands and is becoming discouraged.
+-   Be aware, this is not Discord's preferred way of handling commands and is discouraged.
 -   All permissions/options must be handled manually.
 
 ### Hosting
 
-Hosting is a very complex topic, but my personal preference as a hosting platform is [Heroku](https://heroku.com). Billing is based on hours of use per month per application. If you simply add a credit card, there are enough free hours for one application to be running 24/7 and then some.
+Hosting is a very complex topic, but for a basic project all you need is something that can keep your node application ticking 24/7. I used to use **Heroku**, but they now charge. I'm not too sure what's out there for free services these days.
+
+As my projects have evolved into more complex beasts, I host using a Linux Virtual Private Server (VPS) with **DigitalOcean**.
 
 ### The End
 
-Good luck! Thanks for stopping by, star the repo if you like it and feel free to make PRs, always welcome feedback and/or learning opportunities.
+Good luck! Thanks for stopping by, star the repo if you like it, and feel free to make PRs. I always welcome feedback and/or learning opportunities.
