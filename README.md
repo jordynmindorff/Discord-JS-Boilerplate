@@ -4,7 +4,7 @@
 
 ### Prerequisites
 
--   Have node.js installed (Discord.js V13.8+ REQUIRES Node v16.9.0 or higher)
+-   Have node.js installed (Discord.js V14+ REQUIRES Node v16.11.0 or higher)
 -   Have git installed
 
 ### About
