@@ -1,25 +1,26 @@
 require('dotenv').config();
-const Discord = require('discord.js');
+const { Client, Partials, GatewayIntentBits, Collection, ActivityType } = require('discord.js');
 const eventHandler = require('./events/eventHandler');
 
 // Initialize bot client with proper partials and intents
 // You will want to decide what intents to allow your bot to access, these are just the ones I pretty much always need.
-const bot = new Discord.Client({
-	partials: ['MESSAGE', 'REACTION', 'GUILD_MEMBER', 'CHANNEL'],
+const bot = new Client({
+	partials: [Partials.Message, Partials.Reaction, Partials.GuildMember, Partials.Channel],
 	intents: [
-		Discord.Intents.FLAGS.GUILDS,
-		Discord.Intents.FLAGS.GUILD_MESSAGES,
-		Discord.Intents.FLAGS.GUILD_MEMBERS,
-		Discord.Intents.FLAGS.GUILD_PRESENCES,
-		Discord.Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
-		Discord.Intents.FLAGS.DIRECT_MESSAGES,
-		Discord.Intents.FLAGS.DIRECT_MESSAGE_REACTIONS,
+		GatewayIntentBits.Guilds,
+		GatewayIntentBits.MessageContent,
+		GatewayIntentBits.GuildMessages,
+		GatewayIntentBits.GuildMembers,
+		GatewayIntentBits.GuildPresences,
+		GatewayIntentBits.GuildMessageReactions,
+		GatewayIntentBits.DirectMessages,
+		GatewayIntentBits.DirectMessageReactions,
 	],
 });
 
 // Create a new collection of commands
-bot.commands = new Discord.Collection();
-bot.slashCommands = new Discord.Collection();
+bot.commands = new Collection();
+bot.slashCommands = new Collection();
 
 // Handle events
 eventHandler(bot);
